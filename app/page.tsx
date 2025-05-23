@@ -6,7 +6,6 @@ import {
   ArrowPathIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import LandingLayout from '@/components/layout/LandingLayout';
 
 interface Stat {
   name: string;
@@ -49,7 +48,7 @@ const stats: Stat[] = [
 
 export default function LandingPage() {
   return (
-    <LandingLayout>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
@@ -147,6 +146,6 @@ export default function LandingPage() {
           ))}
         </div>
       </div>
-    </LandingLayout>
+    </div>
   );
 }
