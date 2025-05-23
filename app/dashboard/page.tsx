@@ -19,7 +19,12 @@ import {
   HomeIcon,
   ChartBarIcon,
   CogIcon,
-  UserCircleIcon
+  UserCircleIcon,
+  CurrencyDollarIcon,
+  ShoppingCartIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+  EllipsisHorizontalIcon
 } from '@heroicons/react/24/outline';
 import ProfileModal from "@/components/ProfileModal";
 
@@ -123,6 +128,7 @@ const AdminDashboard = () => {
     { id: 3, message: "New user registration: John Doe", time: "1 day ago", read: true },
   ]);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
     if (!isLoading) {
