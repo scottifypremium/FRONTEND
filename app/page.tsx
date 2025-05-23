@@ -1,50 +1,5 @@
 import Image from "next/image";
-import {
-  MagnifyingGlassIcon,
-  BookOpenIcon,
-  UsersIcon,
-  ArrowPathIcon,
-  ExclamationTriangleIcon,
-} from '@heroicons/react/24/outline';
-
-interface Stat {
-  name: string;
-  value: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  change: string;
-  changeType: 'increase' | 'decrease';
-}
-
-const stats: Stat[] = [
-  {
-    name: 'Total Books',
-    value: '12,345',
-    icon: BookOpenIcon,
-    change: '+12%',
-    changeType: 'increase',
-  },
-  {
-    name: 'Active Members',
-    value: '2,345',
-    icon: UsersIcon,
-    change: '+8%',
-    changeType: 'increase',
-  },
-  {
-    name: 'Books Checked Out',
-    value: '456',
-    icon: ArrowPathIcon,
-    change: '-3%',
-    changeType: 'decrease',
-  },
-  {
-    name: 'Overdue Books',
-    value: '23',
-    icon: ExclamationTriangleIcon,
-    change: '+2',
-    changeType: 'increase',
-  },
-];
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 export default function LandingPage() {
   return (
@@ -113,37 +68,6 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <div className="px-4 py-16 bg-gray-50">
-        <div className="grid grid-cols-1 gap-6 mx-auto max-w-7xl sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <div
-              key={stat.name}
-              className="p-6 bg-white rounded-lg shadow-sm"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="flex-shrink-0">
-                  <stat.icon className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                  <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
-                  <p
-                    className={`text-sm ${
-                      stat.changeType === 'increase'
-                        ? 'text-green-600'
-                        : 'text-red-600'
-                    }`}
-                  >
-                    {stat.change} from last month
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
