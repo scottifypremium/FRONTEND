@@ -1,14 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
-  ArrowRightIcon,
   MagnifyingGlassIcon,
   BookOpenIcon,
   UsersIcon,
   ArrowPathIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import Layout from '@/components/layout/Layout';
+import LandingLayout from '@/components/layout/LandingLayout';
 
 interface Stat {
   name: string;
@@ -49,33 +47,9 @@ const stats: Stat[] = [
   },
 ];
 
-const recentActivity = [
-  {
-    id: 1,
-    book: 'The Great Gatsby',
-    member: 'John Doe',
-    action: 'checked out',
-    date: '2 hours ago',
-  },
-  {
-    id: 2,
-    book: 'To Kill a Mockingbird',
-    member: 'Jane Smith',
-    action: 'returned',
-    date: '3 hours ago',
-  },
-  {
-    id: 3,
-    book: '1984',
-    member: 'Mike Johnson',
-    action: 'checked out',
-    date: '5 hours ago',
-  },
-];
-
 export default function LandingPage() {
   return (
-    <Layout>
+    <LandingLayout>
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
@@ -103,7 +77,7 @@ export default function LandingPage() {
             </p>
 
             {/* Search Bar */}
-            <div className="flex items-center w-full max-w-lg mt-8 bg-white rounded-lg">
+            <div className="flex items-center w-full max-w-lg mt-8 bg-white rounded-lg shadow-lg">
               <MagnifyingGlassIcon className="w-5 h-5 ml-4 text-gray-400" />
               <input
                 type="text"
@@ -111,15 +85,6 @@ export default function LandingPage() {
                 className="w-full px-4 py-3 text-gray-700 bg-transparent border-none focus:outline-none focus:ring-0"
               />
             </div>
-
-            {/* CTA Button */}
-            <Link
-              href="/signup"
-              className="inline-flex items-center px-8 py-3 mt-8 text-lg font-medium text-white transition duration-300 bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              READ MORE
-              <ArrowRightIcon className="w-5 h-5 ml-2" />
-            </Link>
           </div>
 
           {/* Featured Books Section */}
@@ -182,6 +147,6 @@ export default function LandingPage() {
           ))}
         </div>
       </div>
-    </Layout>
+    </LandingLayout>
   );
 }
