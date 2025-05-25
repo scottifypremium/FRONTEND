@@ -27,6 +27,7 @@ import {
   EllipsisHorizontalIcon
 } from '@heroicons/react/24/outline';
 import ProfileModal from "@/components/ProfileModal";
+import Loader from "@/components/loader";
 
 interface Book {
   id: number;
@@ -493,10 +494,7 @@ const AdminDashboard = () => {
   if (isLoading || !authToken || user?.role !== 'admin') {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
-          <p className="text-gray-600 font-medium">Loading dashboard...</p>
-        </div>
+        <Loader />
       </div>
     );
   }
@@ -825,11 +823,13 @@ const AdminDashboard = () => {
                   </div>
                 </div>
 
-                {loading.books ? (
+                {loading.books && (
                   <div className="flex justify-center items-center h-64">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                    <Loader />
                   </div>
-                ) : books.length === 0 ? (
+                )}
+
+                {books.length === 0 ? (
                   <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded relative" role="alert">
                     No books found
                   </div>
@@ -948,11 +948,13 @@ const AdminDashboard = () => {
                   </div>
                 </div>
 
-                {loading.users ? (
+                {loading.users && (
                   <div className="flex justify-center items-center h-64">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                    <Loader />
                   </div>
-                ) : users.length === 0 ? (
+                )}
+
+                {users.length === 0 ? (
                   <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded relative" role="alert">
                     No users found
                   </div>
@@ -1063,11 +1065,13 @@ const AdminDashboard = () => {
                   </div>
                 </div>
 
-                {loading.transactions ? (
+                {loading.transactions && (
                   <div className="flex justify-center items-center h-64">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                    <Loader />
                   </div>
-                ) : transactions.length === 0 ? (
+                )}
+
+                {transactions.length === 0 ? (
                   <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded relative" role="alert">
                     No transactions found
                   </div>
@@ -1252,8 +1256,7 @@ const AdminDashboard = () => {
                 >
                   {loading.action ? (
                     <div className="flex items-center">
-                      <ArrowPathIcon className="animate-spin -ml-1 mr-2 h-4 w-4" />
-                      Adding...
+                      <Loader />
                     </div>
                   ) : (
                     'Add Book'
@@ -1376,8 +1379,7 @@ const AdminDashboard = () => {
                 >
                   {loading.action ? (
                     <div className="flex items-center">
-                      <ArrowPathIcon className="animate-spin -ml-1 mr-2 h-4 w-4" />
-                      Updating...
+                      <Loader />
                     </div>
                   ) : (
                     'Update Book'
