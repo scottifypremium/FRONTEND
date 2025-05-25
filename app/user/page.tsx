@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ArrowPathIcon, BookOpenIcon, ClockIcon } from '@heroicons/react/24/outline';
 import ProfileModal from "@/components/ProfileModal";
+import Loader from '@/components/loader';
 
 interface Book {
   id: number;
@@ -203,7 +204,7 @@ const UserDashboard = () => {
   if (isLoading || !authToken || (user?.role === 'admin')) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+        <Loader />
       </div>
     );
   }
@@ -303,7 +304,7 @@ const UserDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {loading.books ? (
             <div className="col-span-full text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-600 mx-auto"></div>
+              <Loader />
             </div>
           ) : filteredBooks.length === 0 ? (
             <div className="col-span-full text-center py-8 text-gray-500">
@@ -379,7 +380,7 @@ const UserDashboard = () => {
               {loading.borrowed ? (
                 <tr>
                   <td colSpan={4} className="px-4 py-2 text-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-primary-600 mx-auto"></div>
+                    <Loader />
                   </td>
                 </tr>
               ) : borrowedBooks.length === 0 ? (
