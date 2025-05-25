@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/context/AppProvider";
 import { useState, useCallback } from "react";
+import Loader from "@/components/loader";
 
 const Navbar = () => {
   const { logout, authToken, user, isLoading } = useAppContext();
@@ -34,8 +35,7 @@ const Navbar = () => {
       <nav className="bg-primary-600 text-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-           
-            <div className="animate-pulse h-4 w-24 bg-primary-500 rounded"></div>
+            <Loader />
           </div>
         </div>
       </nav>
